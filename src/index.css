@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  font-family: "Playfair Display", serif;
+}
+html.dark {
+  background-color: black;
+  color: white;
+}
+section {
+  padding: 10px 40px;
+  scroll-snap-align: center;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  width: 100vw;
+}
+.skills-container {
+  width: 60%;
+}
+
+/* The text content of hero section css */
+.text-content h1 {
+  font-family: "Sansita", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 150px;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 1603px) {
+  .text-content h1 {
+    font-size: 120px;
+  }
+  .skills-container {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1291px) {
+  .text-content h1 {
+    font-size: 110px;
+  }
+  .skills-container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1108px) {
+  .text-content h1 {
+    font-size: 90px;
+  }
+  .skills-container {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 919px) {
+  section {
+    padding: 10px;
+  }
+  .text-content h1 {
+    font-size: 70px;
+  }
+  .skills-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 461px) {
+  section {
+    padding: 0;
+  }
+  .text-content h1 {
+    font-size: 50px;
+  }
+}
+
+.text-content h1:nth-child(3) {
+  -webkit-text-stroke: 2px #000;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+.text-content h1:hover {
+  -webkit-text-stroke: 2px #000;
+  color: transparent;
+  transform: scale(1.01);
+}
+.text-content h1:hover + h1:nth-child(3) {
+  -webkit-text-fill-color: #000;
+  transform: scale(0.97);
+}
+.text-content h1:nth-child(3):hover {
+  -webkit-text-fill-color: #000000;
+  -webkit-text-stroke: 2px white;
+  z-index: 100;
+}
+
+/* nav element */
+.nav-ul {
+  @apply flex flex-col items-end gap-2 sm:flex-row md:gap-6 relative z-20;
+}
+.nav-li {
+  @apply cursor-pointer uppercase font-bold;
+  position: relative;
+}
+.nav-li::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: rgba(194, 122, 255, 0.5);
+  transition: width 0.3s ease;
+}
+.nav-li:hover {
+  transition: 0.3s ease;
+  transform: translateY(-10px);
+}
+.nav-li:hover::after {
+  width: 100%;
+}
+/* Hero section buttons hovering effect */
+.buttons button:first-child {
+  position: relative;
+  overflow: hidden;
+}
+.buttons button:first-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(194, 122, 255, 0.5);
+  transition: all 0.5s ease;
+}
+.buttons:hover button:first-child::before {
+  width: 0%;
+  color: white;
+}
+.buttons:hover button:first-child {
+  color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+}
+/* last child */
+.buttons button:last-child {
+  position: relative;
+  font-weight: 500;
+  border: 2px solid black;
+}
+.buttons button:last-child::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(194, 122, 255, 0.5);
+  transition: all 0.5s ease;
+}
+.buttons:hover button:last-child::before {
+  width: 100%;
+  color: white;
+}
+.buttons:hover button:last-child {
+  color: white;
+}
+
+/* typing text animation */
+.cut-text {
+  font-family: "Arial", sans-serif;
+  position: relative;
+  color: #780d8d;
+  overflow: hidden;
+}
+
+.cut-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #ffffff; 
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); 
+  animation: cutLine 4s infinite linear;
+}
+@keyframes cutLine {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.one{
+  width: 70%;
+}
+.left{
+  width: 35%;
+}
+.right{
+  width: 30%;
+}
+.right img{
+  height: 100%;
+}
+@media screen and (max-width: 1600px) {
+  .left{
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1365px) {
+  .left{
+    width: 50%;
+  }
+  .right{
+    width: 40%;
+  }
+}
+@media screen and (max-width: 1210px) {
+  .one{
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1071px) {
+  .one{
+    width: 90%;
+  }
+}
+@media screen and (max-width: 956px) {
+  .one{
+    justify-content: start;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 756px) {
+  .one{
+    width: 100%;
+    justify-content: start;
+    font-size: 13px;
+  }
+  .right{
+    width: 50%;
+  }
+}
+@media screen and (max-width: 550px) {
+  .left {
+    width: 100%;
+  }
+  .right{
+    display: none;
+  }
+}
