@@ -87,7 +87,7 @@ export default function Contact() {
           >
             <motion.path
               d="M13.5 2C13.5 2 15.8335 2.21213 18.8033 5.18198C21.7731 8.15183 21.9853 10.4853 21.9853 10.4853"
-              stroke="orange"
+              stroke="purple"
               strokeWidth=".5"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
@@ -96,7 +96,7 @@ export default function Contact() {
             />
             <motion.path
               d="M14.207 5.53564C14.207 5.53564 15.197 5.81849 16.6819 7.30341C18.1668 8.78834 18.4497 9.77829 18.4497 9.77829"
-              stroke="orange"
+              stroke="purple"
               strokeWidth=".5"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
@@ -105,7 +105,7 @@ export default function Contact() {
             />
             <motion.path
               fill="transparent"
-              stroke="orange"
+              stroke="purple"
               strokeWidth="0.5"
               initial={{ pathLength: 0 }}
               animate={isInView && { pathLength: 0.9 }}

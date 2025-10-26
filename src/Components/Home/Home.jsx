@@ -16,7 +16,7 @@ export default function Home() {
       <div className="h-[100vh] flex flex-col items-center justify-center text-2xl relative overflow-hidden">
         {/* Text Content */}
 
-        <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-20 sm:top-30 flex flex-col items-center justify-center">
+        <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-12 -left-2 sm:top-30 flex flex-col items-center justify-center">
           <p className="">👋My name is daizi and i am a freelance</p>
           <h1 className="work1">Webdesigner</h1>
           <h1 className="work2">& Fullstack Developer</h1>
@@ -27,7 +27,7 @@ export default function Home() {
         </div>
 
         {/* Image Content */}
-        <div className="h-[50%] w-[100%] sm:w-[90%] absolute top-[45%] sm:top-[45%] flex items-center justify-center">
+        <div className="h-[50%] w-[100%] sm:w-[90%] absolute -left-2 top-[45%] sm:top-[45%] flex items-center justify-center">
           <img
             onClick={handleImageClick}
             className="h-40 border-2 rounded-2xl p-1 md:h-100 lg:h-140 sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"

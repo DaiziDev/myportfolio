@@ -98,21 +98,21 @@ export default function About() {
         {/* text of about me  */}
         <div className="w-full h-[50%] md:h-full flex items-center justify-center flex-col text-2xl">
           <div className="text-center md:text-start">
-            <h1 className="font-bold md:mb-4">ABOUT ME</h1>
-            <p className="text-gray-600 text-[20px] md:text-2xl">
+            <h1 className="font-bold md:mb-1">ABOUT ME</h1>
+            <p className="text-gray-600 text-[15px] md:text-2xl">
               I am a passionate and innovative developer dedicated to creating
               clean, efficient, and scalable solutions. Committed to continuous
               learning, collaboration, and delivering high-quality code that
               drives successful project outcomes
             </p>
-            <button className="my-5 md:my-10 rounded p-2 text-[20px] bg-purple-500 hover:bg-purple-100 rounded-br-3xl shadow-xl/30 cursor-pointer transition-all duration-700">
+            <button className="my-2 md:my-10 rounded p-2 text-[20px] bg-purple-500 hover:bg-purple-100 rounded-br-3xl shadow-xl/30 cursor-pointer transition-all duration-700">
               <a href="https://www.facebook.com/share/1Bgo9E37Xe/">Explore Me</a>
             </button>
           </div>
         </div>
       </div>
 
-      <div className="skills h-[30%] md:h-[40%] w-full flex flex-col items-center justify-center">
+      <div className="skills h-[50%] md:h-[40%] w-full flex flex-col items-center justify-center">
         <hr className="border w-full mt-1 bg-gray-300"/>
 
         <div class="cut-text text-5xl" data-text="My Skills">My Skills</div>
