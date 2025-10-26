@@ -31,7 +31,7 @@ export default function Home() {
           <img
             onClick={handleImageClick}
             className="h-40 border-2 rounded-2xl p-1 md:h-100 lg:h-140 sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
-            src="/src/assets/Me.png"
+            src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381729/Me_ftgmth.png"
             alt=""
           />
 

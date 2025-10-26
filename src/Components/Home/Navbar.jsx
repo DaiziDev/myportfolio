@@ -11,11 +11,7 @@ function Navigation({ closeMenu }) {
       <li className="nav-li" onClick={closeMenu}><a href="#home">Home</a></li>
       <li className="nav-li" onClick={closeMenu}><a href="#about">About Me</a></li>
       <li className="nav-li" onClick={closeMenu}><a href="#work">My Work</a></li>
-      <li className="nav-li" onClick={closeMenu}><a href="#contact">Contact Me</a></li>
-      <li className="nav-li relative" onClick={closeMenu}>
-        <FaMoon />
-        <FaSun className="hidden" />
-      </li>
+      <li className="nav-li mr-2" onClick={closeMenu}><a href="#contact">Contact Me</a></li>
     </ul>
   );
 }
@@ -65,7 +61,7 @@ export default function Navbar() {
         <div className="logo">
           <img
             className="w-20 md:w-40"
-            src="/src/assets/Group 1 (1).svg"
+            src="https://res.cloudinary.com/dlhevtzle/image/upload/v1760139262/nebmqk1yvs4wlo3bvj2i.svg"
             alt=""
           />
         </div>

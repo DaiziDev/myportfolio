@@ -2,70 +2,70 @@ import WaterFillCircle from "./Loading";
 
 const skills = [
   {
-    logo: "/src/assets/Logos/html.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382312/html_ki18ky.png",
     loading: "laoding",
     text: "HTML",
     paragraph: "Building solid, accessible websites from the ground up",
     circleData: { percentage: 100, number: 100 },
   },
   {
-    logo: "/src/assets/Logos/css.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382285/css_dobsqk.png",
     loading: "Loading....",
     text: "CSS",
     paragraph: "Designing visually appealing and user-friendly interfaces.",
     circleData: { percentage: 99, number: 99 },
   },
   {
-    logo: "/src/assets/Logos/bootstrap.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382278/bootstrap_yakpvx.png",
     loading: "Loading....",
     text: "BootStrap",
     paragraph: "Creating responsive sites quickly and efficiently.",
     circleData: { percentage: 97, number: 97 },
   },
   {
-    logo: "/src/assets/Logos/js.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382322/js_dnzwlh.png",
     loading: "Loading....",
     text: "JavaScript",
     paragraph: "Adding interactivity that engages users.",
     circleData: { percentage: 70, number: 70 },
   },
   {
-    logo: "/src/assets/Logos/jquery.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382318/jquery_c0br2n.png",
     loading: "Loading....",
     text: "JQuery",
     paragraph: "Simplifying JavaScript for smooth functionality.",
     circleData: { percentage: 50, number: 50 },
   },
   {
-    logo: "/src/assets/Logos/tailwindcss.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382341/tailwindcss_illvvz.png",
     loading: "Loading....",
     text: "Tailwind",
     paragraph: "Crafting modern, customizable designs fast.",
     circleData: { percentage: 90, number: 90 },
   },
   {
-    logo: "/src/assets/Logos/react.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382336/react_acpypb.png",
     loading: "Loading....",
     text: "React",
     paragraph: "Building dynamic, scalable web apps.",
     circleData: { percentage: 60, number: 60 },
   },
   {
-    logo: "/src/assets/Logos/git.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382297/git_zbs01z.png",
     loading: "Loading....",
     text: "Git",
     paragraph: "Ensuring organized and collaborative version control.",
     circleData: { percentage: 60, number: 60 },
   },
   {
-    logo: "/src/assets/Logos/github.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382303/github_bdvt9m.png",
     loading: "Loading....",
     text: "GitHub",
     paragraph: "Sharing and managing code seamlessly.",
     circleData: { percentage: 80, number: 80 },
   },
   {
-    logo: "/src/assets/Logos/figma.png",
+    logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382293/figma_tv1pn4.png",
     loading: "Loading....",
     text: "Figma",
     paragraph: "Designing intuitive interfaces collaboratively",
@@ -82,14 +82,14 @@ export default function About() {
           <div className="hidden md:flex self-center md:self-end md:mr-20 mr-0 w-60 h-80 rounded-2xl overflow-hidden">
             <img
               className="filter-[saturate(0)] w-full h-auto object-center"
-              src="/src/assets/20251007_122302.jpg"
+              src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381889/20251007_122302_uktazt.jpg"
               alt=""
             />
           </div>
           <div className="w-60 h-80 rounded-2xl self-center md:self-end overflow-hidden">
             <img
               className="filter-[saturate(0)] w-full h-auto object-center"
-              src="/src/assets/IMG_0924.JPG"
+              src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381880/IMG_0924_teonhg.jpg"
               alt=""
             />
           </div>
@@ -124,7 +124,7 @@ export default function About() {
               className="text-center relative flex flex-col items-center justify-center"
             >
               <div className="logo">
-                <img className=" h-[2.5rem] md:h-[3rem] md:w-[3rem] " src={skill.logo} alt="" />
+                <img className=" h-[2.5rem] md:h-[3rem] md:w-[3rem] object-contain " src={skill.logo} alt="" />
               </div>
               {/* 
                   
