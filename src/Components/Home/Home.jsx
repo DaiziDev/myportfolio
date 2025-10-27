@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 export default function Home() {
   const [isFullImage, setIsFullImage] = useState(false);
@@ -10,27 +12,32 @@ export default function Home() {
   const handleClose = () => {
     setIsFullImage(false);
   };
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    })
+  })
   return (
     <div id="home">
       <Navbar />
       <div className="h-[100vh] flex flex-col items-center justify-center text-2xl relative overflow-hidden">
         {/* Text Content */}
 
-        <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-12 -left-2 sm:top-30 flex flex-col items-center justify-center">
-          <p className="">👋My name is daizi and i am a freelance</p>
-          <h1 className="work1">Webdesigner</h1>
-          <h1 className="work2">& Fullstack Developer</h1>
-          <div className="location w-full flex flex-col md:flex-row justify-between mt-10">
+        <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-80 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
+          <p data-aos="fade-right" className="">👋My name is daizi and i am a freelance</p>
+          <h1 data-aos="fade-left" className="work1">Webdesigner</h1>
+          <h1 data-aos="fade-right" className="work2">& Fullstack Developer</h1>
+          <div data-aos="fade-left" className="location w-full flex flex-col md:flex-row justify-between mt-10">
             <div>Located in Cameroon, Yaounde</div>
             <div>trusted to deliver excellence worldwide.</div>
           </div>
         </div>
 
         {/* Image Content */}
-        <div className="h-[50%] w-[100%] sm:w-[90%] absolute -left-2 top-[45%] sm:top-[45%] flex items-center justify-center">
+        <div className="h-[50%] w-[100%] sm:w-[90%] absolute top-160 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
           <img
             onClick={handleImageClick}
-            className="h-40 border-2 rounded-2xl p-1 md:h-100 lg:h-140 sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
+            className="h-60 border-2 rounded-2xl p-1 md:h-100 lg:h-140 sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
             src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381729/Me_ftgmth.png"
             alt=""
           />
@@ -41,7 +48,7 @@ export default function Home() {
               className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
               onClick={handleClose}
             >
-              <div className="relative max-w-4xl max-h-full p-4">
+              <div data-aos="fade-right" className="relative max-w-4xl max-h-full p-4">
                 <button
                   className="absolute top-2 right-2 text-white text-3xl z-50"
                   onClick={handleClose}
@@ -56,7 +63,7 @@ export default function Home() {
               </div>
             </div>
           )}
-                <div className="buttons w-full sm:w-fit absolute bottom-0 sm:bottom-2  z-50 flex items-center justify-center flex-col sm:flex-row gap-4">
+                <div data-aos="fade-up" className="buttons w-full sm:w-fit absolute bottom-0 sm:bottom-2  z-50 flex items-center justify-center flex-col sm:flex-row gap-4">
         <button className="firstB cursor-pointer w-70 sm:w-90 transition duration-500 border py-2 px-4 rounded text-white text-[19px] sm:text-4xl border-none">
           You need a designer
         </button>

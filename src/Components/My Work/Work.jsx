@@ -7,7 +7,7 @@ export default function Work() {
       <h1 className="text-4xl font-black">Recent Work</h1>
       <p>A collection of projects i've worked on</p>
 
-      <div className="one w-[70%] flex items-center justify-start mt-5">
+      <div data-aos="fade-left" className="one w-[70%] flex items-center justify-start mt-5">
         <div className="left w-[35%] h-full ">
           <span className="text-purple-400 font-bold text-[15px]">
             Featured Project
@@ -30,7 +30,7 @@ export default function Work() {
         </div>
       </div>
 
-      <div className="one w-[70%] flex items-center justify-end mt-5">
+      <div data-aos="fade-right" className="one w-[70%] flex items-center justify-end mt-5">
         <div className="left w-[35%] h-full ">
           <span className="text-purple-400 font-bold text-[15px]">
             Featured Project
@@ -50,7 +50,7 @@ export default function Work() {
         </div>
       </div>
 
-      <div className="one w-[70%] flex items-center justify-start mt-5">
+      <div data-aos="fade-left" className="one w-[70%] flex items-center justify-start mt-5">
         <div className="left w-[35%] h-full ">
           <span className="text-purple-400 font-bold text-[15px]">
             Featured Project

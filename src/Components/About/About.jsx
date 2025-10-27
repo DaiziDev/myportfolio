@@ -79,14 +79,14 @@ export default function About() {
       <div className="flex md:gap-15 flex-col relative w-full h-[70%] md:flex-row md:h-[60%] items-center justify-center pt-5">
         {/* imgage of about me */}
         <div className="h-[50%] w-full md:h-full flex flex-col gap-10 relative ">
-          <div className="hidden md:flex self-center md:self-end md:mr-20 mr-0 w-60 h-80 rounded-2xl overflow-hidden">
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="hidden md:flex self-center md:self-end md:mr-20 mr-0 w-60 h-80 rounded-2xl overflow-hidden">
             <img
               className="filter-[saturate(0)] w-full h-auto object-center"
-              src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381889/20251007_122302_uktazt.jpg"
+              src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381928/Me2_mmlodl.jpg"
               alt=""
             />
           </div>
-          <div className="w-60 h-80 rounded-2xl self-center md:self-end overflow-hidden">
+          <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="w-60 h-80 rounded-2xl self-center md:self-end overflow-hidden">
             <img
               className="filter-[saturate(0)] w-full h-auto object-center"
               src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381880/IMG_0924_teonhg.jpg"
@@ -96,7 +96,7 @@ export default function About() {
         </div>
 
         {/* text of about me  */}
-        <div className="w-full h-[50%] md:h-full flex items-center justify-center flex-col text-2xl">
+        <div data-aos="zoom-in-left" className="w-full h-[50%] md:h-full flex items-center justify-center flex-col text-2xl">
           <div className="text-center md:text-start">
             <h1 className="font-bold md:mb-1">ABOUT ME</h1>
             <p className="text-gray-600 text-[15px] md:text-2xl">
@@ -117,7 +117,7 @@ export default function About() {
 
         <div class="cut-text text-5xl" data-text="My Skills">My Skills</div>
         
-        <div className="skills-container w-full h-[80%] md:h-[90%] pt-2 grid grid-cols-3 md:grid-cols-5 gap-4">
+        <div data-aos="fade-left" className="skills-container w-full h-[80%] md:h-[90%] pt-2 grid grid-cols-3 md:grid-cols-5 gap-4">
           {skills.map((skill, index) => (
             <div
               key={index}

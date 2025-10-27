@@ -4,6 +4,8 @@ import { IoMdClose } from "react-icons/io";
 import { FaMoon, FaSun } from "react-icons/fa";
 /* eslint-disable no-unused-vars */
 import { motion, AnimatePresence } from "motion/react";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 
 function Navigation({ closeMenu }) {
   return (
@@ -50,6 +52,11 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return() => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
+
+    useEffect(() => {
+    Aos.init({duration: 2000});
+  }, [])
+
   return (
     <div>
       <div className={`flex items-center justify-between fixed w-[96%] z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/50" : " "}` }
@@ -58,7 +65,7 @@ export default function Navbar() {
       }}
       >
         {/* Logo Here */}
-        <div className="logo">
+        <div data-aos="fade-down-right" className="logo">
           <img
             className="w-20 md:w-40"
             src="https://res.cloudinary.com/dlhevtzle/image/upload/v1760139262/nebmqk1yvs4wlo3bvj2i.svg"
@@ -66,7 +73,7 @@ export default function Navbar() {
           />
         </div>
 
-        <div className="flex">
+        <div data-aos="fade-down-left" className="flex">
           {/* navigation two */}
 
           <nav className="hidden sm:flex">
