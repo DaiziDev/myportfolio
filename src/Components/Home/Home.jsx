@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Aos from "aos";
-import 'aos/dist/aos.css'
+import "aos/dist/aos.css";
 
 export default function Home() {
   const [isFullImage, setIsFullImage] = useState(false);
@@ -15,8 +15,8 @@ export default function Home() {
   useEffect(() => {
     Aos.init({
       duration: 2000,
-    })
-  })
+    });
+  });
   return (
     <div id="home">
       <Navbar />
@@ -24,10 +24,19 @@ export default function Home() {
         {/* Text Content */}
 
         <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-80 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-          <p data-aos="fade-right" className="">👋My name is daizi and i am a freelance</p>
-          <h1 data-aos="fade-left" className="work1">Webdesigner</h1>
-          <h1 data-aos="fade-right" className="work2">& Fullstack Developer</h1>
-          <div data-aos="fade-left" className="location w-full flex flex-col md:flex-row justify-between mt-10">
+          <p data-aos="fade-right" className="">
+            👋My name is daizi and i am a freelance
+          </p>
+          <h1 data-aos="fade-left" className="work1">
+            Webdesigner
+          </h1>
+          <h1 data-aos="fade-right" className="work2">
+            & Fullstack Developer
+          </h1>
+          <div
+            data-aos="fade-left"
+            className="location w-full flex flex-col md:flex-row justify-between mt-10"
+          >
             <div>Located in Cameroon, Yaounde</div>
             <div>trusted to deliver excellence worldwide.</div>
           </div>
@@ -48,7 +57,10 @@ export default function Home() {
               className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
               onClick={handleClose}
             >
-              <div data-aos="fade-right" className="relative max-w-4xl max-h-full p-4">
+              <div
+                data-aos="fade-right"
+                className="relative max-w-4xl max-h-full p-4"
+              >
                 <button
                   className="absolute top-2 right-2 text-white text-3xl z-50"
                   onClick={handleClose}
@@ -63,14 +75,18 @@ export default function Home() {
               </div>
             </div>
           )}
-                <div data-aos="fade-up" className="buttons w-full sm:w-fit absolute bottom-0 sm:bottom-2  z-50 flex items-center justify-center flex-col sm:flex-row gap-4">
-        <button className="firstB cursor-pointer w-70 sm:w-90 transition duration-500 border py-2 px-4 rounded text-white text-[19px] sm:text-4xl border-none">
-          You need a designer
-        </button>
-        <button className="secondB text-[18px] sm:w-90 sm:text-3xl cursor-pointer transition duration-500 p-2 border-2 rounded border-white">
-          You need a developper
-        </button>
-      </div>
+          <div
+            data-aos="fade-up"
+            data-aos-once="true"
+            className="buttons w-full sm:w-fit absolute bottom-0 sm:-bottom-2  z-50 flex items-center justify-center flex-col sm:flex-row gap-4"
+          >
+            <button className="firstB cursor-pointer w-70 sm:w-90 transition duration-500 border py-2 px-4 rounded text-white text-[19px] sm:text-4xl border-none">
+              You need a designer
+            </button>
+            <button className="secondB text-[18px] sm:w-90 sm:text-3xl cursor-pointer transition duration-500 p-2 border-2 rounded border-white">
+              You need a developper
+            </button>
+          </div>
         </div>
       </div>
     </div>
