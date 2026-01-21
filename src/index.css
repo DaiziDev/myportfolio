@@ -198,7 +198,7 @@ section {
   }
 }
 
-.one{
+/* .one{
   width: 70%;
 }
 .left{
@@ -209,7 +209,8 @@ section {
 }
 .right img{
   height: 100%;
-}
+} */
+/*  
 @media screen and (max-width: 1600px) {
   .left{
     width: 40%;
@@ -256,4 +257,4 @@ section {
   .right{
     display: none;
   }
-}
+} */
