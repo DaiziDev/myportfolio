@@ -2,16 +2,16 @@ export default function Work() {
   return (
     <div
       id="work"
-      className="h-full w-full flex flex-col items-center justify-center px-5"
+      className="h-full w-full flex flex-col items-center justify-center px-5 mt-5"
     >
       <h1 className="text-4xl font-black">Recent Work</h1>
       <p className="mb-10">A collection of projects i've worked on</p>
 
       <div
-        data-aos="fad-left"
-        className="one w-[80%] h-80 relative px-5 flex flex-col items-center justify-start mt-5 "
+        data-aos="fade-right"
+        className="w-[100%] h-90 sm:w-[80%] sm:h-80 relative sm:px-5 flex flex-col items-center justify-start mt-5 mb-5 "
       >
-        <div className="left w-[35%] h-full absolute left-15 z-10">
+        <div className="absolute bottom-0 h-[40%] text-[15px] sm:tex-xl  sm:w-[35%] sm:h-full sm:left-15 z-10">
           <span className="text-purple-700 font-bold text-[15px]">
             Featured Project
           </span>
@@ -30,7 +30,7 @@ export default function Work() {
             <i class="fa-brands fa-square-js text-yellow-600 hover:scale-[1.1] cursor-pointer"></i>
           </div>
         </div>
-        <div className="right absolute right-0 h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
+        <div className="right absolute sm:right-0 top-0 sm:h-full h-[60%] bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
           <img
             className="h-full w-full"
             src="/src/assets/images/Capture d'écran 2026-01-21 143956.png"
@@ -41,10 +41,10 @@ export default function Work() {
 
       <div
         data-aos="fade-left"
-        className="one w-[80%] h-80 relative px-5 flex items-center justify-start my-20 "
+        className="one w-[100%] h-130 sm:w-[80%] sm:h-80 relative sm:px-5 flex items-center justify-start mt-40 sm:my-20 "
       >
-        <div className="left w-[35%] h-full absolute right-15 z-10">
-          <div className="text-end">
+      <div className="top-0 w-[100%] sm:w-[35%] h-[60%] sm:h-full absolute sm:right-20 z-10">
+          <div className="text-start sm:text-end">
             <span className="text-purple-700 text-start font-bold text-[15px]">
               Featured Project
             </span>
@@ -68,7 +68,7 @@ export default function Work() {
             <i class="fa-brands fa-square-js text-yellow-600 hover:scale-[1.1] cursor-pointer"></i>
           </div>
         </div>
-        <div className="right absolute left-15 h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
+        <div className="absolute bottom-0 h-[40%] sm:left-20 sm:h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
           <img
             src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761382072/class_dxmlx2.png"
             alt="Gbhs image loading"
@@ -78,10 +78,10 @@ export default function Work() {
       </div>
 
       <div
-        data-aos="fad-left"
-        className="one w-[80%] h-80 relative px-5 flex items-center justify-start mt-5 "
+        data-aos="fade-right"
+        className=" w-[100%] h-150 sm:w-[80%] sm:h-80 relative sm:px-5 flex items-center justify-start mt-5 "
       >
-        <div className="left w-[35%] h-full absolute left-15 z-10">
+        <div className="sm:w-[35%] w-full h-[60%] sm:h-full absolute sm:left-15 bottom-0 z-10">
           <span className="text-purple-700 font-bold text-[15px]">
             Featured Project
           </span>
@@ -100,7 +100,7 @@ export default function Work() {
             <i class="fa-brands fa-square-js text-yellow-600 hover:scale-[1.1] cursor-pointer"></i>
           </div>
         </div>
-        <div className="right absolute right-0 h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
+        <div className="absolute sm:right-0 top-0 h-[40%] sm:h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
           <img
             className="h-full w-full"
             src="/src/assets/images/kota.png"
