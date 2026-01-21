@@ -2,7 +2,7 @@ export default function Work() {
   return (
     <div
       id="work"
-      className="h-full w-full flex flex-col items-center justify-center"
+      className="h-full w-full flex flex-col items-center justify-center px-5"
     >
       <h1 className="text-4xl font-black">Recent Work</h1>
       <p>A collection of projects i've worked on</p>
@@ -12,7 +12,9 @@ export default function Work() {
           <span className="text-purple-400 font-bold text-[15px]">
             Featured Project
           </span>
-          <h2 className="text-2xl font-bold">Javascript Project</h2>
+          <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300">
+            <a href="https://gracebilingual.com/">Grace Bilingual Plateform</a>
+          </h2>
           <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-purple-500 text-white">
             A webpage, built with modern JavaScript, features smooth animations
             and interactive effects for an engaging user experience. Designed to

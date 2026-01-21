@@ -112,10 +112,9 @@ export default function About() {
         </div>
       </div>
 
-      <div className="skills h-[50%] md:h-[40%] w-full flex flex-col items-center justify-center">
-        <hr className="border w-full mt-1 bg-gray-300"/>
+      <div className="skills w-full flex flex-col items-center justify-center mb-15 h-[80%] md:h-[70%]">
 
-        <div class="cut-text text-5xl" data-text="My Skills">My Skills</div>
+        <div className="cut-text text-5xl mt-10" data-text="My Skills">My Skills</div>
         
         <div data-aos="fade-left" className="skills-container w-full h-[80%] md:h-[90%] pt-2 grid grid-cols-3 md:grid-cols-5 gap-4">
           {skills.map((skill, index) => (

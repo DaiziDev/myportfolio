@@ -18,7 +18,7 @@ export default function Home() {
     });
   });
   return (
-    <div id="home">
+    <div id="home" className="-mb-15 sm:mb-10">
       <Navbar />
       <div className="h-[100vh] flex flex-col items-center justify-center text-2xl relative overflow-hidden">
         {/* Text Content */}
@@ -34,7 +34,7 @@ export default function Home() {
             & Fullstack Developer
           </h1>
           <div
-            data-aos="fade-left"
+            
             className="location w-full flex flex-col md:flex-row justify-between mt-10"
           >
             <div>Located in Cameroon, Yaounde</div>
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="h-[50%] w-[100%] sm:w-[90%] absolute top-160 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
           <img
             onClick={handleImageClick}
-            className="h-60 border-2 rounded-2xl p-1 md:h-100 lg:h-140 sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
+            className="h-60 border-2 rounded-2xl p-1 md:h-100 lg:h-140 hidden sm:flex sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
             src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381729/Me_ftgmth.png"
             alt=""
           />
