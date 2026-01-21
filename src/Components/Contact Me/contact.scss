@@ -1,5 +1,5 @@
 .contact {
-  height: 100vh;
+  height: 90vh;
   max-width: 1336px;
   margin: auto;
   display: flex;
@@ -75,6 +75,7 @@
 @media screen and (max-width: 850px) {
   .contact{
     flex-direction: column;
+    height: 150vh;
     gap: 10px;
   }
     .contact .textContainer {
