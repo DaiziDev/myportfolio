@@ -33,7 +33,7 @@ export default function Work() {
         <div className="right absolute sm:right-0 top-0 sm:h-full h-[60%] bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
           <img
             className="h-full w-full"
-            src="/src/assets/images/Capture d'écran 2026-01-21 143956.png"
+            src="https://res.cloudinary.com/dlhevtzle/image/upload/v1769015188/Capture_d_%C3%A9cran_2026-01-21_143956_lf4lpe.png"
             alt="grace bilingual image loading"
           />
         </div>
@@ -103,7 +103,7 @@ export default function Work() {
         <div className="absolute sm:right-0 top-0 h-[40%] sm:h-full bg-red-400 flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
           <img
             className="h-full w-full"
-            src="/src/assets/images/kota.png"
+            src="https://res.cloudinary.com/dlhevtzle/image/upload/v1769015188/Capture_d_%C3%A9cran_2026-01-21_152627_ss8je0.png"
             alt="kotaflix image loading"
           />
         </div>
