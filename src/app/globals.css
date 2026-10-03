@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #05050a;
+  --color-fg: #eef0ff;
+  --color-muted: #8b91b0;
+  --color-line: #1d1f2e;
+  --color-cyan: #5ef2ff;
+  --color-violet: #9b7bff;
+  --color-pink: #ff6bd6;
+
+  --font-display: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+html {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-display);
+  overflow-x: clip;
+}
+
+body.is-loading {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-violet);
+  color: var(--color-bg);
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-violet) 50%, var(--color-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--color-fg) 35%, transparent);
+  color: transparent;
+}
+
+/* Lines revealed by SplitText are wrapped in a mask */
+.line-mask {
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee var(--duration, 30s) linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+/* Hide the native cursor only where the custom one is active */
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor a,
+  html.has-cursor button {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+}
