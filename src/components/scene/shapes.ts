@@ -223,3 +223,35 @@ export function interfaceShape(count: number): Shape {
 function mix(a: [number, number, number], b: [number, number, number], t: number): [number, number, number] {
   return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
 }
+
+// Final shape, formed at the bottom of the page.
+export function signatureShape(count: number): Shape {
+  return sampleCanvas(
+    (ctx, w, h) => {
+      const gradient = ctx.createLinearGradient(80, 0, w - 80, 0);
+      gradient.addColorStop(0, CYAN);
+      gradient.addColorStop(0.5, VIOLET);
+      gradient.addColorStop(1, PINK);
+      ctx.fillStyle = gradient;
+      ctx.font = "bold 330px ui-sans-serif, system-ui, Arial, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("DAIZI", w / 2, h / 2 - 40);
+
+      // Little spark under the name
+      ctx.fillStyle = WHITE;
+      ctx.beginPath();
+      const cx = w / 2;
+      const cy = h / 2 + 200;
+      ctx.moveTo(cx, cy - 40);
+      ctx.quadraticCurveTo(cx, cy, cx + 40, cy);
+      ctx.quadraticCurveTo(cx, cy, cx, cy + 40);
+      ctx.quadraticCurveTo(cx, cy, cx - 40, cy);
+      ctx.quadraticCurveTo(cx, cy, cx, cy - 40);
+      ctx.fill();
+    },
+    1100,
+    720,
+    count,
+  );
+}

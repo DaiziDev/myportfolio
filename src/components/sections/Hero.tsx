@@ -5,12 +5,14 @@ import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { profile } from "@/lib/content";
-import { PRELOADER_DONE } from "../ui/Preloader";
+import { useContent } from "@/lib/i18n";
+import { whenIntroDone } from "../ui/Preloader";
 
 gsap.registerPlugin(SplitText);
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const t = useContent();
 
   useGSAP(
     () => {
@@ -29,7 +31,7 @@ export default function Hero() {
           .from(split.lines, { yPercent: 110, duration: 1.3, stagger: 0.12, ease: "expo.out" })
           .to(fades, { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: "power3.out" }, "-=0.8");
       };
-      window.addEventListener(PRELOADER_DONE, play, { once: true });
+      const stop = whenIntroDone(play);
 
       // The title drifts up and fades as you leave the hero.
       gsap.to(title, {
@@ -39,7 +41,7 @@ export default function Hero() {
         scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: true },
       });
 
-      return () => window.removeEventListener(PRELOADER_DONE, play);
+      return stop;
     },
     { scope: root },
   );
@@ -47,25 +49,25 @@ export default function Hero() {
   return (
     <section id="top" ref={root} className="relative flex min-h-svh flex-col justify-end px-5 pt-28 pb-10 sm:px-10">
       <p data-fade className="mb-6 font-mono text-xs tracking-widest text-muted uppercase sm:text-sm">
-        {profile.name} — {profile.location}
+        {profile.name} — {t.location}
       </p>
 
       <h1
         data-title
         className="max-w-[14ch] text-[15vw] leading-[0.9] font-bold tracking-tighter sm:text-[10vw] lg:text-[8.5vw]"
       >
-        Fullstack developer crafting <span className="text-gradient">wow.</span>
+        {t.hero.title} <span className="text-gradient">{t.hero.highlight}</span>
       </h1>
 
       <div className="mt-10 flex flex-col gap-6 text-sm text-muted sm:flex-row sm:items-end sm:justify-between">
         <p data-fade className="max-w-sm text-base text-fg/80">
-          I turn ideas into fast, solid web products with Angular, Next.js and React, and bring them to life with motion.
+          {t.hero.intro}
         </p>
         <div data-fade className="flex items-center gap-3 font-mono text-xs tracking-widest uppercase">
           <span className="relative flex h-8 w-5 justify-center rounded-full border border-muted/60 pt-1.5">
             <span className="h-1.5 w-1 animate-bounce rounded-full bg-cyan" />
           </span>
-          Scroll to explore
+          {t.hero.scroll}
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { chapters } from "@/lib/content";
+import { useContent } from "@/lib/i18n";
 import { sceneState } from "@/lib/sceneState";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +33,7 @@ function progressToMorph(p: number) {
 // cloud → code → interface while the matching chapter text swaps in.
 export default function Story() {
   const root = useRef<HTMLElement>(null);
+  const t = useContent();
 
   useGSAP(
     () => {
@@ -45,8 +46,12 @@ export default function Story() {
           start: "top top",
           end: "bottom bottom",
           scrub: true,
+          // onRefresh covers reloads and language switches that land in the middle of the section.
+          onRefresh: (self) => {
+            sceneState.morphParts.story = progressToMorph(self.progress);
+          },
           onUpdate: (self) => {
-            sceneState.morph = progressToMorph(self.progress);
+            sceneState.morphParts.story = progressToMorph(self.progress);
           },
         },
       });
@@ -72,9 +77,9 @@ export default function Story() {
     <section id="story" ref={root} className="relative h-[500vh]">
       <div className="sticky top-0 flex h-svh items-end px-5 pb-16 sm:items-center sm:px-10 sm:pb-0">
         <div className="relative grid w-full max-w-md">
-          {chapters.map((c) => (
-            <div key={c.index} data-chapter className="col-start-1 row-start-1">
-              <p className="mb-4 font-mono text-sm text-cyan">{c.index} / 03</p>
+          {t.chapters.map((c, i) => (
+            <div key={i} data-chapter className="col-start-1 row-start-1">
+              <p className="mb-4 font-mono text-sm text-cyan">0{i + 1} / 03</p>
               <h2 className="mb-4 text-5xl leading-none font-bold tracking-tighter sm:text-7xl">{c.title}</h2>
               <p className="text-base text-fg/70 sm:text-lg">{c.text}</p>
             </div>

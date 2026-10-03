@@ -4,11 +4,9 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { stack } from "@/lib/content";
+import { useContent } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const all = stack.flatMap((g) => g.items);
 
 function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
   // Content is doubled so the -50% translate loops seamlessly.
@@ -32,6 +30,8 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 
 export default function Stack() {
   const root = useRef<HTMLElement>(null);
+  const { stack } = useContent();
+  const all = stack.flatMap((g) => g.items);
 
   useGSAP(
     () => {

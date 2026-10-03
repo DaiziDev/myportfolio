@@ -2,7 +2,9 @@
 
 Portfolio of Daizi, fullstack developer (Angular, Next.js, React) who loves motion.
 
-The hero is a WebGL particle system that tells a story while you scroll: **an idea** (a cloud) → **becomes code** → **becomes an interface**.
+The hero is a WebGL particle system that tells a story while you scroll: **an idea** (a cloud) → **becomes code** → **becomes an interface**, before the particles sign the page at the very bottom.
+
+Also: EN/FR switch, mobile menu, phone-tilt interaction, WebGL ripple on project images, reduced-motion support and a WebGL-free fallback.
 
 ## Stack
 
@@ -26,11 +28,15 @@ npm run lint
 
 | What | File |
 | --- | --- |
-| Texts, projects, skills, links | `src/lib/content.ts` |
+| Texts (English + French), projects, skills, links, resume | `src/lib/content.ts` |
 | Shapes drawn by the particles (code + interface) | `src/components/scene/shapes.ts` |
 | Particle shader (morph, mouse effect, colors) | `src/components/scene/Particles.tsx` |
 | Scroll pacing of the story | `src/components/sections/Story.tsx` (`KEYS`) |
 | Colors and fonts | `src/app/globals.css`, `src/app/layout.tsx` |
+
+## Resume download
+
+Drop your PDF in `public/` (e.g. `public/cv-daizi.pdf`) and set `profile.cv` to `"/cv-daizi.pdf"` in `src/lib/content.ts`. The download button appears automatically.
 
 ## Deploy (Render)
 
