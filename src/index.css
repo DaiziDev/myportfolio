@@ -1,178 +1,134 @@
 @import "tailwindcss";
 
+/* ============================================================
+   CHARTE GRAPHIQUE / DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* --- Typographie --- */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Roboto", sans-serif;
+  --font-mono: "Sansita", sans-serif;
+
+  /* --- Light Mode Colours Fond --- */
+  --bg-page:          #ffffff;
+  --bg-elevated:      #f8f6f2;
+  --bg-navbar:        rgba(255, 255, 255, 0.78);
+  --bg-navbar-scroll: rgba(255, 255, 255, 0.88);
+  --bg-card:          #ffffff;
+  --bg-section-alt:   #faf8f5;
+
+  /* --- Light Mode Colours Texte --- */
+  --text-primary:   #111827;
+  --text-secondary: #4b5563;
+  --text-muted:     #9ca3af;
+  --text-white:     #ffffff;
+
+  /* --- Light Mode Accents --- */
+  --accent-primary:   #7c3aed;
+  --accent-secondary: #d97706;
+  --accent-light:     #a78bfa;
+  --accent-gradient:  linear-gradient(135deg, #7c3aed, #d97706);
+
+  /* --- Light Mode Bordures --- */
+  --border-light: #e5e7eb;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.06);
+}
+
+html.dark {
+  /* --- Dark Mode Colours Fond --- */
+  --bg-page:          #0a0a0a;
+  --bg-elevated:      #12121f;
+  --bg-navbar:        rgba(10, 10, 10, 0.75);
+  --bg-navbar-scroll: rgba(10, 10, 10, 0.85);
+  --bg-card:          #1a1a2e;
+  --bg-section-alt:   #0f0f1a;
+
+  /* --- Dark Mode Colours Texte --- */
+  --text-primary:   #f3f4f6;
+  --text-secondary: #d1d5db;
+  --text-muted:     #6b7280;
+  --text-white:     #ffffff;
+
+  /* --- Dark Mode Accents --- */
+  --accent-primary:   #a78bfa;
+  --accent-secondary: #fbbf24;
+  --accent-light:     #c4b5fd;
+  --accent-gradient:  linear-gradient(135deg, #a78bfa, #fbbf24);
+
+  /* --- Dark Mode Bordures --- */
+  --border-light: #374151;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.3);
+}
+
+
+/* ============================================================
+   CLASSES UTILITAIRES DE LA CHARTE
+   ============================================================ */
+
+.text-primary        { color: var(--text-primary) !important; }
+.text-secondary      { color: var(--text-secondary); }
+.text-muted          { color: var(--text-muted); }
+.text-accent         { color: var(--accent-primary); }
+.text-accent-alt     { color: var(--accent-secondary); }
+
+.bg-page             { background-color: var(--bg-page); }
+.bg-elevated         { background-color: var(--bg-elevated); }
+.bg-card             { background-color: var(--bg-card); }
+.bg-navbar           { background-color: var(--bg-navbar); }
+.bg-navbar-scroll    { background-color: var(--bg-navbar-scroll); }
+.bg-accent           { background-color: var(--accent-primary); }
+.bg-accent-alt       { background-color: var(--accent-secondary); }
+
+.border-charte       { border-color: var(--border-light); }
+.border-accent       { border-color: var(--accent-primary); }
+
+.accent-gradient     { background: var(--accent-gradient); }
+.shadow-accent       { box-shadow: 0 4px 14px -2px color-mix(in srgb, var(--accent-primary) 25%, transparent); }
+
+/* ============================================================
+   STYLES DE BASE
+   ============================================================ */
+
 html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-html.dark {
-  background-color: black;
-  color: white;
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
 }
+
 section {
   padding: 10px 40px;
   overflow: hidden;
-  background-color: rgb(255, 255, 255);
-
+  background-color: var(--bg-page);
+  transition: background-color 0.3s ease;
 }
+
+/* ============================================================
+   COMPOSANTS SPECIFIQUES
+   ============================================================ */
+
 .skills-container {
   width: 60%;
 }
 
-/* The text content of hero section css */
-.text-content h1 {
-  font-family: "Sansita", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 150px;
-  transition: all 0.3s ease;
-}
-@media screen and (max-width: 1603px) {
-  .text-content h1 {
-    font-size: 120px;
-  }
-  .skills-container {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 1291px) {
-  .text-content h1 {
-    font-size: 110px;
-  }
-  .skills-container {
-    width: 80%;
-  }
-}
-@media screen and (max-width: 1108px) {
-  .text-content h1 {
-    font-size: 90px;
-  }
-  .skills-container {
-    width: 90%;
-  }
-}
-@media screen and (max-width: 919px) {
-  section {
-    padding: 10px;
-  }
-  .text-content h1 {
-    font-size: 70px;
-  }
-  .skills-container {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 461px) {
-  section {
-    padding: 0;
-  }
-  .text-content h1 {
-    font-size: 50px;
-  }
-}
-
-.text-content h1:nth-child(3) {
-  -webkit-text-stroke: 2px #000;
-  color: transparent;
-  transition: all 0.3s ease;
-}
-.text-content h1:hover {
-  -webkit-text-stroke: 2px #000;
-  color: transparent;
-  transform: scale(1.01);
-}
-.text-content h1:hover + h1:nth-child(3) {
-  -webkit-text-fill-color: #000;
-  transform: scale(0.97);
-}
-.text-content h1:nth-child(3):hover {
-  -webkit-text-fill-color: #000000;
-  -webkit-text-stroke: 2px white;
-  z-index: 100;
-}
-
-/* nav element */
-.nav-ul {
-  @apply flex flex-col items-end gap-2 sm:flex-row md:gap-6 relative z-20;
-}
-.nav-li {
-  @apply cursor-pointer uppercase font-bold;
-  position: relative;
-}
-.nav-li::after {
-  content: " ";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: rgba(194, 122, 255, 0.5);
-  transition: width 0.3s ease;
-}
-.nav-li:hover {
-  transition: 0.3s ease;
-  transform: translateY(-10px);
-}
-.nav-li:hover::after {
-  width: 100%;
-}
-/* Hero section buttons hovering effect */
-.buttons button:first-child {
-  position: relative;
-  overflow: hidden;
-}
-.buttons button:first-child::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: rgba(194, 122, 255, 0.5);
-  transition: all 0.5s ease;
-}
-.buttons:hover button:first-child::before {
-  width: 0%;
-  color: white;
-}
-.buttons:hover button:first-child {
-  color: rgb(0, 0, 0);
-  border: 2px solid rgb(0, 0, 0);
-}
-/* last child */
-.buttons button:last-child {
-  position: relative;
-  font-weight: 500;
-  border: 2px solid black;
-}
-.buttons button:last-child::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 100%;
-  z-index: -1;
-  background-color: rgba(194, 122, 255, 0.5);
-  transition: all 0.5s ease;
-}
-.buttons:hover button:last-child::before {
-  width: 100%;
-  color: white;
-}
-.buttons:hover button:last-child {
-  color: white;
-}
-
-/* typing text animation */
 .cut-text {
-  font-family: "Arial", sans-serif;
+  font-family: var(--font-mono);
   position: relative;
   color: #780d8d;
   overflow: hidden;
+  font-size: 3rem;
 }
 
 .cut-text::before {
@@ -182,79 +138,32 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  color: #ffffff; 
-  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); 
+  color: #ffffff;
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
   animation: cutLine 4s infinite linear;
 }
+
+html.dark .cut-text {
+  color: var(--accent-primary);
+}
+html.dark .cut-text::before {
+  color: var(--accent-primary);
+}
+
 @keyframes cutLine {
-  0% {
-    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
-  }
-  50% {
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%);
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  0%   { clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%); }
+  50%  { clip-path: polygon(0 0, 100% 0, 100% 80%, 0 80%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+@media screen and (max-width: 850px) {
+  section {
+    padding: 10px 20px;
   }
 }
 
-/* .one{
-  width: 70%;
-}
-.left{
-  width: 35%;
-}
-.right{
-  width: 30%;
-}
-.right img{
-  height: 100%;
-} */
-/*  
-@media screen and (max-width: 1600px) {
-  .left{
-    width: 40%;
+@media screen and (max-width: 461px) {
+  section {
+    padding: 0;
   }
 }
-@media screen and (max-width: 1365px) {
-  .left{
-    width: 50%;
-  }
-  .right{
-    width: 40%;
-  }
-}
-@media screen and (max-width: 1210px) {
-  .one{
-    width: 80%;
-  }
-}
-@media screen and (max-width: 1071px) {
-  .one{
-    width: 90%;
-  }
-}
-@media screen and (max-width: 956px) {
-  .one{
-    justify-content: start;
-    font-size: 15px;
-  }
-}
-@media screen and (max-width: 756px) {
-  .one{
-    width: 100%;
-    justify-content: start;
-    font-size: 13px;
-  }
-  .right{
-    width: 50%;
-  }
-}
-@media screen and (max-width: 550px) {
-  .left {
-    width: 100%;
-  }
-  .right{
-    display: none;
-  }
-} */

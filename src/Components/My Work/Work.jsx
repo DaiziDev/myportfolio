@@ -12,20 +12,20 @@ export default function Work() {
         className="w-[100%] h-90 sm:w-[80%] sm:h-80 relative sm:px-5 flex flex-col items-center justify-start mt-5 mb-5 "
       >
         <div className="absolute bottom-0 h-[40%] text-[15px] sm:tex-xl  sm:w-[35%] sm:h-full sm:left-15 z-10">
-          <span className="text-purple-700 font-bold text-[15px]">
+          <span className="text-accent font-bold text-[15px]">
             Featured Project
           </span>
-          <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300">
+          <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300 text-primary">
             <a href="https://gracebilingual.com/">Grace Bilingual Plateform</a>
           </h2>
-          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-purple-700 text-white">
+          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-accent/90 text-white">
             A webpage, built with modern JavaScript, features smooth animations
             and interactive effects for an engaging user experience. Website
             design to ease teachers experience through out the year enter marks
             manage presence and more.
           </div>
           <div className="icon md:translate-x-10 text-2xl">
-            <i class="fa-brands fa-php text-purple-700 hover:scale-[1.1] cursor-pointer"></i>
+            <i class="fa-brands fa-php text-accent hover:scale-[1.1] cursor-pointer"></i>
             <i class="fa-brands fa-css text-blue-600 hover:scale-[1.1] cursor-pointer"></i>
             <i class="fa-brands fa-square-js text-yellow-600 hover:scale-[1.1] cursor-pointer"></i>
           </div>
@@ -45,14 +45,14 @@ export default function Work() {
       >
       <div className="top-0 w-[100%] sm:w-[35%] h-[60%] sm:h-full absolute sm:right-20 z-10">
           <div className="text-start sm:text-end">
-            <span className="text-purple-700 text-start font-bold text-[15px]">
+            <span className="text-accent text-start font-bold text-[15px]">
               Featured Project
             </span>
-            <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300">
+            <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300 text-primary">
               <a href="https://gbhs-students.onrender.com/">GBHS Website</a>
             </h2>
           </div>
-          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-purple-700 text-white">
+          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-accent/90 text-white">
             This website, built with html & tailwindcss, is designed for
             classmates to stay in touch, share updates, and collaborate easily.
             It features interactive elements and a user-friendly interface to
@@ -82,13 +82,13 @@ export default function Work() {
         className=" w-[100%] h-150 sm:w-[80%] sm:h-80 relative sm:px-5 flex items-center justify-start mt-5 "
       >
         <div className="sm:w-[35%] w-full h-[60%] sm:h-full absolute sm:left-15 bottom-0 z-10">
-          <span className="text-purple-700 font-bold text-[15px]">
+          <span className="text-accent font-bold text-[15px]">
             Featured Project
           </span>
-          <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300">
+          <h2 className="text-2xl font-bold cursor-pointer hover:text-3xl transition-all duration-300 text-primary">
             <a href="https://kotaflix-rca.onrender.com/">Kotaflix-RCA</a>
           </h2>
-          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-purple-500 text-white">
+          <div className="border-none p-2 rounded-[12px] my-5 md:translate-x-10 bg-accent/80 text-white">
             HD Streaming platform built with react and tailwindcss, offering a
             vast library of movies and TV shows. Enjoy seamless streaming with a
             user- friendly interface, personalized recommendations, and

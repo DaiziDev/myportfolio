@@ -1,91 +1,85 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "./Navbar";
+import DeskScene from "./DeskScene";
 import Aos from "aos";
 import "aos/dist/aos.css";
-
 export default function Home() {
-  const [isFullImage, setIsFullImage] = useState(false);
 
-  const handleImageClick = () => {
-    setIsFullImage(true);
-  };
-  const handleClose = () => {
-    setIsFullImage(false);
-  };
   useEffect(() => {
     Aos.init({
       duration: 2000,
     });
-  });
+  }, []);
+
   return (
-    <div id="home" className="-mb-15 sm:mb-10">
+    <div id="home" className="min-h-screen">
       <Navbar />
-      <div className="h-[100vh] flex flex-col items-center justify-center text-2xl relative overflow-hidden">
-        {/* Text Content */}
 
-        <div className="text-content text-center h-[60%] w-[100%] sm:w-[90%] absolute top-80 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-          <p data-aos="fade-right" className="">
-            👋My name is daizi and i am a freelance
-          </p>
-          <h1 data-aos="fade-left" className="work1">
-            Webdesigner
-          </h1>
-          <h1 data-aos="fade-right" className="work2">
-            & Fullstack Developer
-          </h1>
-          <div
-            
-            className="location w-full flex flex-col md:flex-row justify-between mt-10"
-          >
-            <div>Located in Cameroon, Yaounde</div>
-            <div>trusted to deliver excellence worldwide.</div>
+      <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 pb-10 px-4 sm:px-8">
+        {/* Subtle background decoration */}
+        <div className="absolute top-20 right-0 w-72 h-72 bg-[var(--accent-primary)]/10 dark:bg-[var(--accent-primary)]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-40 left-0 w-96 h-96 bg-[var(--accent-secondary)]/10 dark:bg-[var(--accent-secondary)]/5 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Main content: Two columns on desktop, stacked on mobile */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          {/* Left: Desk Scene */}
+          <div className="w-full lg:w-1/2 flex items-center justify-center order-1 lg:order-1" data-aos="fade-right" data-aos-duration="1200">
+            <DeskScene />
           </div>
-        </div>
 
-        {/* Image Content */}
-        <div className="h-[50%] w-[100%] sm:w-[90%] absolute top-160 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-          <img
-            onClick={handleImageClick}
-            className="h-60 border-2 rounded-2xl p-1 md:h-100 lg:h-140 hidden sm:flex sm:border-0 sm:rounded-none sm:h-70 cursor-pointer"
-            src="https://res.cloudinary.com/dlhevtzle/image/upload/v1761381729/Me_ftgmth.png"
-            alt=""
-          />
+          {/* Right: Text Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left order-2 lg:order-2">
+            <div data-aos="fade-left" data-aos-duration="1200">
+              <p className="text-lg md:text-xl text-secondary mb-4 font-light tracking-wide">
+                👋 My name is Daizi and I'm a freelance
+              </p>
 
-          {/* Optional: Button or instructions */}
-          {isFullImage && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
-              onClick={handleClose}
-            >
-              <div
-                data-aos="fade-right"
-                className="relative max-w-4xl max-h-full p-4"
-              >
-                <button
-                  className="absolute top-2 right-2 text-white text-3xl z-50"
-                  onClick={handleClose}
-                >
-                  &times;
-                </button>
-                <img
-                  src="/src/assets/Me2.jpg"
-                  alt="Full View"
-                  className="max-w-full max-h-full rounded-lg"
-                />
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-tight">
+                <span className="block text-primary">Webdesigner</span>
+                <span className="block text-primary">& Fullstack</span>
+                <span className="block text-transparent bg-clip-text accent-gradient">
+                  Developer
+                </span>
+              </h1>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-8 text-secondary text-sm md:text-base">
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-accent" />
+                  Located in Cameroon, Yaoundé
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-accent-alt" />
+                  Trusted to deliver excellence worldwide
+                </span>
               </div>
             </div>
-          )}
-          <div
-            data-aos="fade-up"
-            data-aos-once="true"
-            className="buttons w-full sm:w-fit absolute bottom-0 sm:-bottom-2  z-50 flex items-center justify-center flex-col sm:flex-row gap-4"
-          >
-            <button className="firstB cursor-pointer w-70 sm:w-90 transition duration-500 border py-2 px-4 rounded text-white text-[19px] sm:text-4xl border-none">
-              You need a designer
-            </button>
-            <button className="secondB text-[18px] sm:w-90 sm:text-3xl cursor-pointer transition duration-500 p-2 border-2 rounded border-white">
-              You need a developper
-            </button>
+
+            {/* Buttons */}
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="300"
+              className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            >
+              <button
+                className="group relative w-full sm:w-auto px-8 py-4 text-lg font-semibold text-white overflow-hidden rounded-xl bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 transition-all duration-300 shadow-accent"
+              >
+                <span className="relative z-10">You need a designer</span>
+              </button>
+              <button
+                className="group relative w-full sm:w-auto px-8 py-4 text-lg font-semibold rounded-xl border-2 border-[var(--text-primary)] text-primary hover:bg-[var(--accent-primary)]/10 transition-all duration-300"
+              >
+                <span className="relative z-10">You need a developer</span>
+              </button>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="mt-16 flex flex-col items-center lg:items-start gap-2 text-muted">
+              <span className="text-xs tracking-widest uppercase">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-charte rounded-full flex justify-center pt-2">
+                <div className="w-1.5 h-1.5 bg-accent rounded-full animate-bounce" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,32 +2,42 @@ import { useEffect, useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import { FaMoon, FaSun } from "react-icons/fa";
-/* eslint-disable no-unused-vars */
 import { motion, AnimatePresence } from "motion/react";
-import Aos from "aos";
-import 'aos/dist/aos.css'
+import { useTheme } from "../../Context/ThemeContext.jsx";
 
-function Navigation({ closeMenu }) {
+const NAV_ITEMS = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Work", href: "#work" },
+  { label: "Contact", href: "#contact" },
+];
+
+function Navigation({ closeMenu, isMobile }) {
   return (
-    <ul className="nav-ul">
-      <li className="nav-li" onClick={closeMenu}><a href="#home">Home</a></li>
-      <li className="nav-li" onClick={closeMenu}><a href="#about">About Me</a></li>
-      <li className="nav-li" onClick={closeMenu}><a href="#work">My Work</a></li>
-      <li className="nav-li mr-2" onClick={closeMenu}><a href="#contact">Contact Me</a></li>
+    <ul className={`${isMobile ? "flex flex-col items-end gap-6 text-2xl" : "flex items-center gap-8"}`}>
+      {NAV_ITEMS.map((item) => (
+        <li key={item.href}>
+          <a
+            href={item.href}
+            onClick={closeMenu}
+            className="relative font-medium tracking-wide text-primary hover:text-[var(--accent-primary)] transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[var(--accent-primary)] after:transition-all after:duration-300 hover:after:w-full"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
     </ul>
   );
 }
 
 export default function Navbar() {
-  const [isOpen, SetIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0)
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const { isDark, toggleDark } = useTheme();
 
-
-  const closeMenu = () => {
-    SetIsOpen(false)
-  }
+  const closeMenu = () => setIsOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,79 +45,105 @@ export default function Navbar() {
 
       if (currentScrollY < lastScrollY) {
         setShowNavbar(true);
-      }else if(currentScrollY > lastScrollY + 10){
-        setShowNavbar(false)
+      } else if (currentScrollY > lastScrollY + 10) {
+        setShowNavbar(false);
       }
 
-      setLastScrollY(currentScrollY)
-
-      if(window.scrollY > 50){
-        setIsScrolled(true)
-      }
-      else{
-        setIsScrolled(false)
-      }
+      setLastScrollY(currentScrollY);
+      setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return() => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
-    useEffect(() => {
-    Aos.init({duration: 2000});
-  }, [])
+  // Close mobile menu on resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 640) setIsOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div>
-      <div className={`flex items-center justify-between fixed w-[96%] z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/50" : " "}` }
-      style = {{
-        transform: showNavbar ? 'translateY(0)' : 'translateY(-100%)',
-      }}
-      >
-        {/* Logo Here */}
-        <div data-aos="fade-down-right" className="logo">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "backdrop-blur-xl bg-navbar-scroll shadow-sm"
+          : "bg-navbar backdrop-blur-sm"
+      } border-b border-charte/50`}
+      style={{ transform: showNavbar ? "translateY(0)" : "translateY(-100%)" }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
+        {/* Logo — blanc en dark, noir en light */}
+        <a href="#home" className="flex items-center">
           <img
-            className="w-20 md:w-40"
+            className="w-16 sm:w-20 md:w-28 h-auto transition-all duration-300"
             src="https://res.cloudinary.com/dlhevtzle/image/upload/v1760139262/nebmqk1yvs4wlo3bvj2i.svg"
-            alt=""
+            alt="DaiziDev Logo"
+            style={{ filter: isDark ? 'none' : 'invert(1)' }}
           />
-        </div>
+        </a>
 
-        <div data-aos="fade-down-left" className="flex">
-          {/* navigation two */}
-
-          <nav className="hidden sm:flex">
-            <Navigation closeMenu={closeMenu}/>
+        {/* Right section */}
+        <div className="flex items-center gap-1 sm:gap-2">
+          {/* Desktop Navigation */}
+          <nav className="hidden sm:flex mr-4">
+            <Navigation closeMenu={closeMenu} />
           </nav>
 
-          {/* navigation two */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.nav
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{opacity: 0, x:20}}
-                style={{ maxHeight: "100vh" }}
-                transition={{ duration: 1 }}
-                className="absolute -right-4 pt-10 pr-6 bg-white z-20 h-[100vh] w-[100vw] sm:hidden text-end overflow-hidden"
-              >
-                <Navigation closeMenu={closeMenu}/>
-              </motion.nav>
-            )}
-          </AnimatePresence>
-          {/* button */}
+          {/* Dark mode toggle */}
           <button
-            className="sm:hidden hover:opacity-50 cursor-pointer z-30"
-            onClick={() => SetIsOpen(!isOpen)}
+            onClick={toggleDark}
+            className="relative p-2.5 rounded-full hover:bg-[var(--accent-primary)]/10 transition-colors duration-300"
+            aria-label={isDark ? "Activer le mode clair" : "Activer le mode sombre"}
+          >
+            <motion.div
+              key={isDark ? "sun" : "moon"}
+              initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isDark ? (
+                <FaSun size={18} className="text-accent-alt" />
+              ) : (
+                <FaMoon size={18} className="text-accent" />
+              )}
+            </motion.div>
+          </button>
+
+          {/* Hamburger button */}
+          <button
+            className="sm:hidden p-2 rounded-lg hover:bg-[var(--accent-primary)]/10 transition-colors duration-300"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
           >
             {isOpen ? (
-              <IoMdClose size={35} className="text-3xl text-red-500" />
+              <IoMdClose size={24} className="text-red-500 dark:text-red-400" />
             ) : (
-              <CiMenuFries size={35}/>
+              <CiMenuFries size={24} className="text-primary" />
             )}
           </button>
         </div>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="sm:hidden overflow-hidden bg-navbar backdrop-blur-xl border-t border-charte"
+          >
+            <div className="px-6 py-8">
+              <Navigation closeMenu={closeMenu} isMobile />
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

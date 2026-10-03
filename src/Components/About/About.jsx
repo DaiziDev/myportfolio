@@ -1,5 +1,3 @@
-import WaterFillCircle from "./Loading";
-
 const skills = [
   {
     logo: "https://res.cloudinary.com/dlhevtzle/image/upload/v1761382312/html_ki18ky.png",
@@ -99,13 +97,13 @@ export default function About() {
         <div data-aos="zoom-in-left" className="w-full h-[50%] md:h-full flex items-center justify-center flex-col text-2xl">
           <div className="text-center md:text-start">
             <h1 className="font-bold md:mb-1">ABOUT ME</h1>
-            <p className="text-gray-600 text-[15px] md:text-2xl">
+            <p className="text-secondary text-[15px] md:text-2xl">
               I am a passionate and innovative developer dedicated to creating
               clean, efficient, and scalable solutions. Committed to continuous
               learning, collaboration, and delivering high-quality code that
               drives successful project outcomes
             </p>
-            <button className="my-2 md:my-10 rounded p-2 text-[20px] bg-purple-500 hover:bg-purple-100 rounded-br-3xl shadow-xl/30 cursor-pointer transition-all duration-700">
+            <button className="my-2 md:my-10 rounded p-2 text-[20px] bg-accent hover:bg-[var(--accent-primary)]/20 rounded-br-3xl shadow-xl/30 cursor-pointer transition-all duration-700">
               <a href="https://www.facebook.com/share/1Bgo9E37Xe/">Explore Me</a>
             </button>
           </div>
@@ -125,19 +123,9 @@ export default function About() {
               <div className="logo">
                 <img className=" h-[2.5rem] md:h-[3rem] md:w-[3rem] object-contain " src={skill.logo} alt="" />
               </div>
-              {/* 
-                  
-              <div className="absolute right-5 top-12">
-                <WaterFillCircle
-                  percentage={skill.circleData.percentage}
-                  number={skill.circleData.number}
-                />
-              </div>
-
-               */}
               <div className="">
                 <h1 className="text-bold">{skill.text}</h1>
-                <p className="text-gray-500 text-[13px] hidden md:block">{skill.paragraph}</p>
+                <p className="text-muted text-[13px] hidden md:block">{skill.paragraph}</p>
               </div>
             </div>
           ))}

@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import { motion, useInView } from "framer-motion";
+import { motion, useInView } from "motion/react";
 import "./contact.scss";
 import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
