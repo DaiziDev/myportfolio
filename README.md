@@ -20,7 +20,7 @@ Also: EN/FR switch, mobile menu, phone-tilt interaction, WebGL ripple on project
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # static site generated in out/
+npm run build   # static site generated in dist/
 npm run lint
 ```
 
@@ -43,4 +43,4 @@ Drop your PDF in `public/` (e.g. `public/cv-daizi.pdf`) and set `profile.cv` to 
 Static Site with:
 
 - Build command: `npm install && npm run build`
-- Publish directory: `out`
+- Publish directory: `dist`
