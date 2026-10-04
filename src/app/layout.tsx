@@ -5,9 +5,9 @@ import "./globals.css";
 const grotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-grotesk" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
-const title = "Daizi — Fullstack Developer";
+const title = "Dimitri Tiolong (Daizi) — Fullstack Developer";
 const description =
-  "Daizi is a fullstack developer based in Yaoundé, Cameroon, specialised in Angular, Next.js and React, who loves building animated, immersive web experiences.";
+  "Dimitri Tiolong (Daizi) is a fullstack developer and functional tester based in Yaoundé, Cameroon: Angular, React, Next.js, PHP and PostgreSQL, with a love for animated, immersive web experiences.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://daizidev-portfolio.onrender.com"),

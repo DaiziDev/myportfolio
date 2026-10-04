@@ -9,15 +9,17 @@ import { sceneState } from "@/lib/sceneState";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Scroll progress (0 → 1) to morph value (0 → 2), with pauses so each shape can be admired:
-// hold cloud, morph to code, hold code, morph to interface, hold interface.
+// Scroll progress (0 → 1) to morph value (0 → 3), with pauses so each shape can be admired:
+// hold cloud, morph to code, hold, morph to interface, hold, morph to test report, hold.
 const KEYS: [number, number][] = [
   [0, 0],
-  [0.08, 0],
+  [0.06, 0],
+  [0.24, 1],
   [0.36, 1],
-  [0.52, 1],
-  [0.8, 2],
-  [1, 2],
+  [0.54, 2],
+  [0.66, 2],
+  [0.84, 3],
+  [1, 3],
 ];
 
 function progressToMorph(p: number) {
@@ -26,11 +28,11 @@ function progressToMorph(p: number) {
     const [p0, m0] = KEYS[i - 1];
     if (p <= p1) return m0 + ((p - p0) / (p1 - p0)) * (m1 - m0);
   }
-  return 2;
+  return 3;
 }
 
 // A tall section with a sticky screen: scrolling through it morphs the particles
-// cloud → code → interface while the matching chapter text swaps in.
+// cloud → code → interface → test report while the matching chapter text swaps in.
 export default function Story() {
   const root = useRef<HTMLElement>(null);
   const t = useContent();
@@ -58,7 +60,7 @@ export default function Story() {
 
       // Chapter 1 is visible at the start; each next one replaces the previous
       // in the middle of the matching morph (timeline runs from 0 to 1, like the scroll progress).
-      const swaps = [0.22, 0.66];
+      const swaps = [0.16, 0.46, 0.76];
       items.forEach((item, i) => {
         if (i === 0) return;
         const at = swaps[i - 1];
@@ -74,12 +76,14 @@ export default function Story() {
   );
 
   return (
-    <section id="story" ref={root} className="relative h-[500vh]">
+    <section id="story" ref={root} className="relative h-[650vh]">
       <div className="sticky top-0 flex h-svh items-end px-5 pb-16 sm:items-center sm:px-10 sm:pb-0">
         <div className="relative grid w-full max-w-md">
           {t.chapters.map((c, i) => (
             <div key={i} data-chapter className="col-start-1 row-start-1">
-              <p className="mb-4 font-mono text-sm text-cyan">0{i + 1} / 03</p>
+              <p className="mb-4 font-mono text-sm text-cyan">
+                0{i + 1} / 0{t.chapters.length}
+              </p>
               <h2 className="mb-4 text-5xl leading-none font-bold tracking-tighter sm:text-7xl">{c.title}</h2>
               <p className="text-base text-fg/70 sm:text-lg">{c.text}</p>
             </div>

@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { sceneState } from "@/lib/sceneState";
 import { prefersReducedMotion } from "@/lib/scroll";
-import { cloudShape, codeShape, interfaceShape, scatterShape, signatureShape } from "./shapes";
+import { cloudShape, codeShape, interfaceShape, scatterShape, signatureShape, testShape } from "./shapes";
 
 const vertexShader = /* glsl */ `
   uniform float uTime;
@@ -26,10 +26,12 @@ const vertexShader = /* glsl */ `
   attribute vec3 aCloud;
   attribute vec3 aCode;
   attribute vec3 aUi;
+  attribute vec3 aTest;
   attribute vec3 aScatter;
   attribute vec3 aCloudColor;
   attribute vec3 aCodeColor;
   attribute vec3 aUiColor;
+  attribute vec3 aTestColor;
   attribute vec3 aScatterColor;
   attribute vec3 aSign;
   attribute vec3 aSignColor;
@@ -57,20 +59,23 @@ const vertexShader = /* glsl */ `
 
     vec3 code = aCode * uShapeScale + uShapeOffset;
     vec3 ui = aUi * uShapeScale + uShapeOffset;
+    vec3 test = aTest * uShapeScale + uShapeOffset;
     vec3 sign = aSign * uSignScale + uSignOffset;
 
     float e1 = segment(0.0);
     float e2 = segment(1.0);
     float e3 = segment(2.0);
     float e4 = segment(3.0);
+    float e5 = segment(4.0);
 
-    vec3 pos = mix(mix(mix(mix(cloud, code, e1), ui, e2), aScatter, e3), sign, e4);
-    vec3 col = mix(mix(mix(mix(aCloudColor, aCodeColor, e1), aUiColor, e2), aScatterColor, e3), aSignColor, e4);
+    // cloud → code → interface → test report → background field → signature
+    vec3 pos = mix(mix(mix(mix(mix(cloud, code, e1), ui, e2), test, e3), aScatter, e4), sign, e5);
+    vec3 col = mix(mix(mix(mix(mix(aCloudColor, aCodeColor, e1), aUiColor, e2), aTestColor, e3), aScatterColor, e4), aSignColor, e5);
     // How much the particles currently form the faint background field.
-    float background = e3 * (1.0 - e4);
+    float background = e4 * (1.0 - e5);
 
     // Turbulence while travelling between two shapes.
-    float travel = sin(e1 * 3.1416) + sin(e2 * 3.1416) + sin(e3 * 3.1416) + sin(e4 * 3.1416);
+    float travel = sin(e1 * 3.1416) + sin(e2 * 3.1416) + sin(e3 * 3.1416) + sin(e4 * 3.1416) + sin(e5 * 3.1416);
     pos += vec3(
       sin(aRandom * 40.0 + uTime * 1.3),
       cos(aRandom * 31.0 + uTime * 1.1),
@@ -115,6 +120,7 @@ function buildGeometry(count: number) {
   const cloud = cloudShape(count);
   const code = codeShape(count);
   const ui = interfaceShape(count);
+  const test = testShape(count);
   const scatter = scatterShape(count);
   const sign = signatureShape(count);
   const random = new Float32Array(count).map(() => Math.random());
@@ -124,10 +130,12 @@ function buildGeometry(count: number) {
   g.setAttribute("aCloud", new THREE.BufferAttribute(cloud.positions, 3));
   g.setAttribute("aCode", new THREE.BufferAttribute(code.positions, 3));
   g.setAttribute("aUi", new THREE.BufferAttribute(ui.positions, 3));
+  g.setAttribute("aTest", new THREE.BufferAttribute(test.positions, 3));
   g.setAttribute("aScatter", new THREE.BufferAttribute(scatter.positions, 3));
   g.setAttribute("aCloudColor", new THREE.BufferAttribute(cloud.colors, 3));
   g.setAttribute("aCodeColor", new THREE.BufferAttribute(code.colors, 3));
   g.setAttribute("aUiColor", new THREE.BufferAttribute(ui.colors, 3));
+  g.setAttribute("aTestColor", new THREE.BufferAttribute(test.colors, 3));
   g.setAttribute("aScatterColor", new THREE.BufferAttribute(scatter.colors, 3));
   g.setAttribute("aSign", new THREE.BufferAttribute(sign.positions, 3));
   g.setAttribute("aSignColor", new THREE.BufferAttribute(sign.colors, 3));
