@@ -145,7 +145,7 @@ export default function Nav() {
           </a>
           <div className="flex items-center gap-2 sm:gap-8">
             <ul className="hidden gap-8 text-sm sm:flex">
-              {t.nav.links.slice(0, 3).map((l) => (
+              {t.nav.links.slice(0, 4).map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="group relative">
                     {l.label}

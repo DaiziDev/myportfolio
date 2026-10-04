@@ -6,8 +6,10 @@ import { useLang } from "@/lib/i18n";
 import Hero from "./Hero";
 import Story from "./Story";
 import About from "./About";
+import Services from "./Services";
 import Stack from "./Stack";
 import Work from "./Work";
+import Journey from "./Journey";
 import Contact from "./Contact";
 import Signature from "./Signature";
 
@@ -25,8 +27,10 @@ export default function Sections() {
       <Hero />
       <Story />
       <About />
+      <Services />
       <Stack />
       <Work />
+      <Journey />
       <Contact />
       <Signature />
     </main>

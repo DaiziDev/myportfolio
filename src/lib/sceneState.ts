@@ -3,7 +3,7 @@
 // to avoid re-rendering the whole tree 60 times per second.
 export const sceneState = {
   // Each scroll section owns one step of the morph. Their sum gives the shape:
-  // 0 = cloud, 1 = code, 2 = interface, 3 = scattered background, 4 = signature.
+  // 0 = cloud, 1 = code, 2 = interface, 3 = test report, 4 = scattered background, 5 = signature.
   morphParts: { story: 0, scatter: 0, signature: 0 },
   get morph() {
     const p = this.morphParts;

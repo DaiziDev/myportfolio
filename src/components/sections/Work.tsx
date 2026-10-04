@@ -80,41 +80,46 @@ export default function Work() {
           <p className="mt-6 max-w-sm text-fg/70">{t.work.intro}</p>
         </div>
 
-        {projects.map((p, i) => (
-          <a
-            key={p.title}
-            href={p.href}
-            target="_blank"
-            rel="noreferrer"
-            data-card
-            data-cursor={t.work.view}
-            className="group block shrink-0 lg:w-[46vw]"
-          >
-            <div data-reveal className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-line">
-              <DistortImage src={p.image} alt={`${t.work.screenshot} ${p.title}`} />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-0" />
-              <span className="absolute top-4 left-4 rounded-full bg-bg/70 px-3 py-1 font-mono text-xs text-fg/90 backdrop-blur">
-                {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-              </span>
-            </div>
-            <div className="mt-6 flex items-start justify-between gap-6">
-              <div>
-                <h3 className="text-3xl font-bold tracking-tight transition-colors group-hover:text-cyan sm:text-4xl">
-                  {p.title}
-                </h3>
-                <p className="mt-2 max-w-md text-sm text-fg/60">{t.work.projects[i]}</p>
+        {projects.map((p, i) => {
+          // Private projects (no public URL yet) render as a plain card with a badge.
+          const linkProps = p.href
+            ? { href: p.href, target: "_blank", rel: "noreferrer", "data-cursor": t.work.view }
+            : { "data-cursor": t.work.private };
+          const Card = p.href ? "a" : "div";
+          return (
+            <Card key={p.title} data-card {...linkProps} className="group block shrink-0 lg:w-[46vw]">
+              <div data-reveal className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-line">
+                <DistortImage src={p.image} alt={`${t.work.screenshot} ${p.title}`} />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-0" />
+                <span className="absolute top-4 left-4 rounded-full bg-bg/70 px-3 py-1 font-mono text-xs text-fg/90 backdrop-blur">
+                  {String(i + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+                </span>
+                {!p.href && (
+                  <span className="absolute top-4 right-4 rounded-full bg-violet/80 px-3 py-1 font-mono text-xs text-bg backdrop-blur">
+                    {t.work.private}
+                  </span>
+                )}
               </div>
-              <span className="font-mono text-sm text-muted">{p.year}</span>
-            </div>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {p.tags.map((tag) => (
-                <li key={tag} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </a>
-        ))}
+              <div className="mt-6 flex items-start justify-between gap-6">
+                <div>
+                  <h3 className="text-3xl font-bold tracking-tight transition-colors group-hover:text-cyan sm:text-4xl">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 max-w-md text-sm text-fg/60">{t.work.projects[i]}</p>
+                </div>
+                <span className="font-mono text-sm text-muted">{p.year}</span>
+              </div>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                <li className="rounded-full border border-cyan/50 px-3 py-1 font-mono text-xs text-cyan">{p.role}</li>
+                {p.tags.map((tag) => (
+                  <li key={tag} className="rounded-full border border-line px-3 py-1 font-mono text-xs text-muted">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          );
+        })}
       </div>
     </section>
   );

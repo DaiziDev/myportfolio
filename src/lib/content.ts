@@ -5,8 +5,9 @@ export type Lang = "en" | "fr";
 
 export const profile = {
   name: "Daizi",
-  email: "shadowapex308@gmail.com",
-  // Put your resume in `public/` (e.g. public/cv-daizi.pdf) and set its path here to show the download button.
+  fullName: "Dimitri Tiolong",
+  email: "dimitritiolong@gmail.com",
+  // Put a resume in `public/` (e.g. public/cv.pdf) and set its path here to show the download button.
   cv: "",
   socials: [
     { label: "GitHub", href: "https://github.com/DaiziDev" },
@@ -14,18 +15,45 @@ export const profile = {
   ],
 };
 
-const projectLinks = [
+// Language-independent project data. `href: null` means the project isn't public yet.
+const projectData = [
+  {
+    title: "Akademee",
+    year: "2026",
+    role: "Fullstack",
+    tags: ["FR / EN / LMD", "Report cards", "Mobile money"],
+    href: "https://akademee.com/",
+    image: "/projects/akademee.webp",
+  },
+  {
+    title: "Spotfli",
+    year: "2026",
+    role: "Lead frontend",
+    tags: ["Search", "Listings", "FR / EN"],
+    href: "https://spotfli.com/",
+    image: "/projects/spotfli.webp",
+  },
+  {
+    title: "Sekouh",
+    year: "2026",
+    role: "Lead frontend",
+    tags: ["Dashboard", "Grades", "Payments"],
+    href: null,
+    image: "/projects/sekouh.webp",
+  },
   {
     title: "Grace Bilingual",
-    year: "2026",
-    tags: ["PHP", "JavaScript", "CSS"],
+    year: "2025",
+    role: "Fullstack",
+    tags: ["PHP", "Bootstrap", "JavaScript"],
     href: "https://gracebilingual.com/",
     image:
       "https://res.cloudinary.com/dlhevtzle/image/upload/f_auto,q_auto,w_1400/v1769015188/Capture_d_%C3%A9cran_2026-01-21_143956_lf4lpe.png",
   },
   {
     title: "Kotaflix",
-    year: "2026",
+    year: "2025",
+    role: "Frontend",
     tags: ["React", "Tailwind CSS", "API"],
     href: "https://kotaflix-rca.onrender.com/",
     image:
@@ -33,7 +61,8 @@ const projectLinks = [
   },
   {
     title: "GBHS Students",
-    year: "2025",
+    year: "2024",
+    role: "Frontend",
     tags: ["HTML", "Tailwind CSS", "JavaScript"],
     href: "https://gbhs-students.onrender.com/",
     image:
@@ -42,9 +71,9 @@ const projectLinks = [
 ];
 
 const stackItems = {
-  frontend: ["Angular", "Next.js", "React", "TypeScript", "Tailwind CSS", "GSAP", "Three.js"],
-  backend: ["Node.js", "PHP", "REST APIs", "SQL"],
-  tools: ["Git", "GitHub", "Figma", "Vite"],
+  frontend: ["Angular", "React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Bootstrap", "GSAP", "Three.js"],
+  backend: ["Java", "Spring Boot", "PHP", "PostgreSQL", "SQL", "REST APIs"],
+  tools: ["Git", "GitHub", "GitLab", "Figma"],
 };
 
 const en = {
@@ -53,8 +82,9 @@ const en = {
   nav: {
     links: [
       { label: "Story", href: "#story" },
-      { label: "About", href: "#about" },
+      { label: "Services", href: "#services" },
       { label: "Work", href: "#work" },
+      { label: "Journey", href: "#journey" },
       { label: "Contact", href: "#contact" },
     ],
     talk: "Let's talk",
@@ -66,7 +96,7 @@ const en = {
   hero: {
     title: "Fullstack developer crafting",
     highlight: "wow.",
-    intro: "I turn ideas into fast, solid web products with Angular, Next.js and React, and bring them to life with motion.",
+    intro: "I build web products end to end, from Java and Spring Boot APIs to Angular and React interfaces, and bring them to life with motion.",
     scroll: "Scroll to explore",
   },
   chapters: [
@@ -76,16 +106,42 @@ const en = {
     },
     {
       title: "Becomes code",
-      text: "I structure it into clean, typed, scalable code, from the API to the components.",
+      text: "I model the data, write the Java and Spring Boot API, then the components that use it.",
     },
     {
-      title: "Becomes an experience",
-      text: "Then I bring it to life: fast interfaces, smooth motion, and that little wow effect.",
+      title: "Becomes an interface",
+      text: "Fast, responsive screens with smooth motion and that little wow effect.",
+    },
+    {
+      title: "Gets tested",
+      text: "Before anything ships, I walk through every flow like a real user would.",
     },
   ],
   about: {
     label: "About",
-    text: "I'm Daizi, a fullstack developer based in Yaoundé. I build the whole product, from the API to the interface, but the frontend is where I shine: Angular, Next.js and React. What I love most is motion, the details that make someone stop scrolling and say wow.",
+    text: "I'm Dimitri Tiolong, aka Daizi, a fullstack developer based in Yaoundé. I build the whole product, from Java and Spring Boot APIs to the interface, and I lead the frontend on products like Spotfli and Sekouh. My favourite part is Angular, React and Next.js, and above all motion: the details that make someone stop scrolling and say wow.",
+  },
+  services: {
+    label: "What I do",
+    title: "From the database",
+    highlight: "to the last pixel.",
+    items: [
+      {
+        title: "Frontend",
+        text: "Interfaces that feel alive: responsive, accessible and animated, built with Angular, React and Next.js.",
+        points: ["Component architecture", "Responsive & accessible UI", "Motion & WebGL", "Figma to code"],
+      },
+      {
+        title: "Backend",
+        text: "Solid foundations behind the screens: clean data models and APIs that hold up in production.",
+        points: ["Java & Spring Boot", "REST API design", "PostgreSQL & SQL", "Data modeling & normalisation"],
+      },
+      {
+        title: "Frontend lead",
+        text: "On Spotfli and Sekouh I lead the frontend: the structure, the standards, and the quality of every screen.",
+        points: ["Frontend architecture", "Code reviews & conventions", "Reusable UI components", "Functional checks before release"],
+      },
+    ],
   },
   stack: [
     { group: "Frontend", items: stackItems.frontend },
@@ -98,11 +154,52 @@ const en = {
     highlight: "built.",
     intro: "Real products, used by real people. Scroll to browse.",
     view: "View",
+    private: "Private beta",
     screenshot: "Screenshot of",
     projects: [
-      "School management platform: teachers enter marks, track attendance and follow their classes all year long.",
-      "HD streaming platform with a large catalogue of movies and series, personalised recommendations and a smooth interface.",
-      "A space for former classmates to stay in touch, share news and collaborate easily.",
+      "Cameroonian school platform for Francophone, Anglophone and LMD schools: grades, report cards, fees with mobile money and school websites.",
+      "Find your perfect place in Cameroon: hotels, homes to rent or buy and services, with search by category and location.",
+      "School management dashboard: enrolments, classes, grades, payments and report cards, with a role for each staff member.",
+      "School management system: register users, enter marks and print report cards.",
+      "Responsive streaming platform for movies, videos and music, with seamless multimedia sharing.",
+      "A website for former classmates to connect, share updates and collaborate easily.",
+    ],
+  },
+  journey: {
+    label: "Journey",
+    title: "How I got",
+    highlight: "here.",
+    items: [
+      {
+        period: "Recent",
+        title: "Lead frontend developer",
+        place: "Spotfli · Sekouh",
+        text: "Leading the frontend of a Cameroonian real-estate & services platform and of a school-management dashboard: architecture, components, conventions and reviews.",
+      },
+      {
+        period: "Recent",
+        title: "Fullstack developer",
+        place: "Akademee",
+        text: "Building features end to end on a school platform for Francophone, Anglophone and LMD schools, from the API to the screens.",
+      },
+      {
+        period: "Recent",
+        title: "Functional tester",
+        place: "Core banking application",
+        text: "Manual functional testing on a core banking system: following test scenarios and reporting issues.",
+      },
+      {
+        period: "Oct 2024 — now",
+        title: "Fullstack developer",
+        place: "Kfokam48 Training Center",
+        text: "Deepening HTML, CSS and JavaScript, then designing and implementing responsive interfaces with React and Angular, backed by Java, PHP and SQL.",
+      },
+      {
+        period: "2022 — 2023",
+        title: "Secondary science education",
+        place: "GBHS Koutaba",
+        text: "Mathematics, computer science and IT. First lines of HTML and CSS, first algorithms and databases.",
+      },
     ],
   },
   contact: {
@@ -131,8 +228,9 @@ const fr: Content = {
   nav: {
     links: [
       { label: "Histoire", href: "#story" },
-      { label: "À propos", href: "#about" },
+      { label: "Services", href: "#services" },
       { label: "Projets", href: "#work" },
+      { label: "Parcours", href: "#journey" },
       { label: "Contact", href: "#contact" },
     ],
     talk: "Parlons-en",
@@ -144,7 +242,7 @@ const fr: Content = {
   hero: {
     title: "Du code fullstack qui fait",
     highlight: "wow.",
-    intro: "Je transforme des idées en produits web rapides et solides avec Angular, Next.js et React, puis je leur donne vie avec du mouvement.",
+    intro: "Je construis des produits web de bout en bout, des API Java et Spring Boot jusqu'aux interfaces Angular et React, puis je leur donne vie avec du mouvement.",
     scroll: "Scrollez pour explorer",
   },
   chapters: [
@@ -154,16 +252,42 @@ const fr: Content = {
     },
     {
       title: "Devient du code",
-      text: "Je la structure en code propre, typé et évolutif, de l'API jusqu'aux composants.",
+      text: "Je modélise les données, j'écris l'API en Java et Spring Boot, puis les composants qui s'en servent.",
     },
     {
-      title: "Devient une expérience",
-      text: "Puis je lui donne vie : des interfaces rapides, des animations fluides et ce petit effet wow.",
+      title: "Devient une interface",
+      text: "Des écrans rapides et responsives, des animations fluides et ce petit effet wow.",
+    },
+    {
+      title: "Est testée",
+      text: "Avant toute mise en ligne, je parcours chaque écran comme le ferait un vrai utilisateur.",
     },
   ],
   about: {
     label: "À propos",
-    text: "Moi c'est Daizi, dév fullstack à Yaoundé. Je construis tout le produit, de l'API à l'interface, mais c'est sur le frontend que je brille : Angular, Next.js et React. Ce que j'aime par-dessus tout, c'est le mouvement, ces détails qui font qu'on arrête de scroller pour dire wow.",
+    text: "Moi c'est Dimitri Tiolong, alias Daizi, dév fullstack à Yaoundé. Je construis tout le produit, des API Java et Spring Boot jusqu'à l'interface, et je dirige le frontend sur des produits comme Spotfli et Sekouh. Ma partie préférée reste Angular, React et Next.js, et surtout le mouvement : ces détails qui font qu'on arrête de scroller pour dire wow.",
+  },
+  services: {
+    label: "Ce que je fais",
+    title: "De la base de données",
+    highlight: "au dernier pixel.",
+    items: [
+      {
+        title: "Frontend",
+        text: "Des interfaces vivantes : responsives, accessibles et animées, avec Angular, React et Next.js.",
+        points: ["Architecture en composants", "UI responsive & accessible", "Animations & WebGL", "De Figma au code"],
+      },
+      {
+        title: "Backend",
+        text: "Des fondations solides derrière les écrans : des modèles de données propres et des API qui tiennent en production.",
+        points: ["Java & Spring Boot", "Conception d'API REST", "PostgreSQL & SQL", "Modélisation & normalisation"],
+      },
+      {
+        title: "Lead frontend",
+        text: "Sur Spotfli et Sekouh, je dirige le frontend : la structure, les standards et la qualité de chaque écran.",
+        points: ["Architecture frontend", "Revues de code & conventions", "Composants UI réutilisables", "Vérifications fonctionnelles avant livraison"],
+      },
+    ],
   },
   stack: [
     { group: "Frontend", items: stackItems.frontend },
@@ -176,11 +300,52 @@ const fr: Content = {
     highlight: "construit.",
     intro: "De vrais produits, utilisés par de vraies personnes. Scrollez pour les découvrir.",
     view: "Voir",
+    private: "Bêta privée",
     screenshot: "Capture d'écran de",
     projects: [
-      "Plateforme de gestion scolaire : les enseignants saisissent les notes, suivent les présences et leurs classes toute l'année.",
-      "Plateforme de streaming HD avec un large catalogue de films et séries, des recommandations personnalisées et une interface fluide.",
-      "Un espace pour que d'anciens camarades de classe restent en contact, partagent des nouvelles et collaborent facilement.",
+      "Plateforme scolaire camerounaise pour les écoles francophones, anglophones et LMD : notes, bulletins, frais par mobile money et sites d'écoles.",
+      "Trouver l'espace parfait au Cameroun : hôtels, maisons à louer ou à acheter et services, avec recherche par catégorie et par lieu.",
+      "Tableau de bord de gestion scolaire : inscriptions, classes, notes, paiements et bulletins, avec un rôle pour chaque membre du personnel.",
+      "Système de gestion scolaire : inscription des utilisateurs, saisie des notes et impression des bulletins.",
+      "Plateforme de streaming responsive pour films, vidéos et musique, avec un partage multimédia fluide.",
+      "Un site pour que d'anciens camarades de classe restent en contact, partagent des nouvelles et collaborent.",
+    ],
+  },
+  journey: {
+    label: "Parcours",
+    title: "Le chemin",
+    highlight: "parcouru.",
+    items: [
+      {
+        period: "Récemment",
+        title: "Lead dév frontend",
+        place: "Spotfli · Sekouh",
+        text: "Direction du frontend d'une plateforme camerounaise d'immobilier et de services, et d'un tableau de bord de gestion scolaire : architecture, composants, conventions et revues.",
+      },
+      {
+        period: "Récemment",
+        title: "Dév fullstack",
+        place: "Akademee",
+        text: "Développement de fonctionnalités de bout en bout sur une plateforme scolaire pour écoles francophones, anglophones et LMD, de l'API jusqu'aux écrans.",
+      },
+      {
+        period: "Récemment",
+        title: "Test fonctionnel",
+        place: "Application de core bancaire",
+        text: "Tests fonctionnels manuels sur un système de core bancaire : déroulement des scénarios de test et remontée des anomalies.",
+      },
+      {
+        period: "Oct. 2024 — aujourd'hui",
+        title: "Dév fullstack",
+        place: "Kfokam48 Training Center",
+        text: "Approfondissement de HTML, CSS et JavaScript, puis conception et intégration d'interfaces responsives avec React et Angular, avec Java, PHP et SQL côté serveur.",
+      },
+      {
+        period: "2022 — 2023",
+        title: "Enseignement secondaire scientifique",
+        place: "GBHS Koutaba",
+        text: "Mathématiques, informatique et TIC. Premières lignes de HTML et CSS, premiers algorithmes et bases de données.",
+      },
     ],
   },
   contact: {
@@ -202,4 +367,4 @@ const fr: Content = {
 };
 
 export const content: Record<Lang, Content> = { en, fr };
-export const projects = projectLinks;
+export const projects = projectData;

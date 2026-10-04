@@ -99,30 +99,23 @@ export function scatterShape(count: number): Shape {
   return { positions, colors };
 }
 
+// A small Spring Boot endpoint: the kind of backend code behind every screen.
 const CODE_LINES: { text: string; color: string }[][] = [
-  [{ text: "const ", color: VIOLET }, { text: "dev", color: CYAN }, { text: " = {", color: WHITE }],
-  [{ text: "  name: ", color: MUTED }, { text: '"Daizi"', color: PINK }, { text: ",", color: WHITE }],
-  [{ text: "  role: ", color: MUTED }, { text: '"Fullstack"', color: PINK }, { text: ",", color: WHITE }],
-  [
-    { text: "  stack: [", color: MUTED },
-    { text: "Angular", color: CYAN },
-    { text: ", ", color: WHITE },
-    { text: "Next", color: CYAN },
-    { text: "],", color: WHITE },
-  ],
-  [{ text: "  build", color: CYAN }, { text: "() {", color: WHITE }],
-  [{ text: "    return ", color: VIOLET }, { text: "wow", color: PINK }, { text: ";", color: WHITE }],
-  [{ text: "  }", color: WHITE }],
-  [{ text: "};", color: WHITE }],
+  [{ text: "@GetMapping(", color: VIOLET }, { text: '"/students"', color: PINK }, { text: ")", color: VIOLET }],
+  [{ text: "public ", color: VIOLET }, { text: "List<Student>", color: CYAN }, { text: " byClass(", color: WHITE }],
+  [{ text: "    @RequestParam ", color: VIOLET }, { text: "Long", color: CYAN }, { text: " id) {", color: WHITE }],
+  [{ text: "  return ", color: VIOLET }, { text: "repository", color: CYAN }],
+  [{ text: "    .findByClassId(", color: WHITE }, { text: "id", color: PINK }, { text: ");", color: WHITE }],
+  [{ text: "}", color: WHITE }],
 ];
 
 export function codeShape(count: number): Shape {
   return sampleCanvas(
-    (ctx) => {
-      ctx.font = "bold 62px ui-monospace, Menlo, Consolas, monospace";
+    (ctx, _w, h) => {
+      ctx.font = "bold 52px ui-monospace, Menlo, Consolas, monospace";
       ctx.textBaseline = "top";
-      const lineHeight = 84;
-      const startY = 24;
+      const lineHeight = 100;
+      const startY = (h - CODE_LINES.length * lineHeight) / 2;
       CODE_LINES.forEach((line, i) => {
         let x = 70;
         for (const token of line) {
@@ -249,6 +242,54 @@ export function signatureShape(count: number): Shape {
       ctx.quadraticCurveTo(cx, cy, cx - 40, cy);
       ctx.quadraticCurveTo(cx, cy, cx, cy - 40);
       ctx.fill();
+    },
+    1100,
+    720,
+    count,
+  );
+}
+
+const TEST_CASES = [
+  "Login with valid credentials",
+  "Pay fees with mobile money",
+  "Generate the report card PDF",
+  "Search homes by location",
+  "Bug #42 fixed and retested",
+];
+
+// A functional test report: every case checked before shipping.
+export function testShape(count: number): Shape {
+  return sampleCanvas(
+    (ctx) => {
+      ctx.font = "bold 46px ui-monospace, Menlo, Consolas, monospace";
+      ctx.textBaseline = "middle";
+
+      // Header: "5 / 5 passed" with a progress bar
+      ctx.fillStyle = WHITE;
+      ctx.fillText("TEST RUN", 60, 60);
+      ctx.fillStyle = CYAN;
+      ctx.fillText("5/5 PASSED", 760, 60);
+      ctx.beginPath();
+      ctx.roundRect(60, 110, 980, 14, 7);
+      ctx.fill();
+
+      TEST_CASES.forEach((label, i) => {
+        const y = 200 + i * 105;
+        // Check box with a tick
+        ctx.strokeStyle = CYAN;
+        ctx.lineWidth = 7;
+        ctx.beginPath();
+        ctx.roundRect(60, y - 30, 60, 60, 12);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(74, y);
+        ctx.lineTo(86, y + 13);
+        ctx.lineTo(108, y - 14);
+        ctx.stroke();
+
+        ctx.fillStyle = i === TEST_CASES.length - 1 ? PINK : WHITE;
+        ctx.fillText(label, 150, y);
+      });
     },
     1100,
     720,
